@@ -1,10 +1,18 @@
 var http = require("http");
+var url = require("url");
 
-function iniciar(){
+function iniciar(route){
 	function onRequest(request, response) {
-	  console.log("Peticion Recibida.");//cada vez que haya un request loggea en el servidor
+	  var pathname = url.parse(request.url).pathname;
+	  console.log("Petición para " + pathname + " recibida.");//cada vez que haya un request loggea en el servidor
+	  console.log(request.url);//tambien te muestra los parametros
+	  //console.log(request.ip);
+	  //console.log(request.ips);
+
+	  route(pathname);
+
 	  response.writeHead(200, {"Content-Type": "text/html"});//encabezado
-	  response.write("<h2>Hola Mundo!!</h2>");
+	  response.write("<h2>Meli Proxy</h2>");
 	  response.end();
 	}
 
