@@ -9,6 +9,9 @@ function iniciar(route, handle){
 	  //console.log(request.ip);
 	  //console.log(request.ips);
 
+	  //me muestra la ip que hace el request
+	  console.log(getRequestIP(request));
+
 	  route(pathname, handle, response);//le delego a cada uno su responsabilidad (en este caso manejar las rutas)
 	}
 
@@ -22,6 +25,12 @@ function iniciar(route, handle){
 	console.log("Servidor Iniciado.");
 
 	//ver como responderle a un cliente especifico (no algo harcodeado para todos)
+}
+
+function getRequestIP(request){
+  return (request.headers['x-forwarded-for'] || '').split(',')[0] 
+        || request.connection.remoteAddress;
+
 }
 
 exports.iniciar = iniciar; //exporto las funciones para que puedan ser utilizadas fuera del modulo
