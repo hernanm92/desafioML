@@ -4,15 +4,19 @@ var url = require("url");
 function iniciar(route, handle){
 	function onRequest(request, response) {
 	  var pathname = url.parse(request.url).pathname;
-	  console.log("Petición para " + pathname + " recibida.");//cada vez que haya un request loggea en el servidor
-	  //console.log(request.url);//tambien te muestra los parametros
-	  //console.log(request.ip);
-	  //console.log(request.ips);
+	  if (pathname != "/favicon.ico") {//si viene esto no le doy bola
+		  console.log("Petición para " + pathname + " recibida.");//cada vez que haya un request loggea en el servidor
+		  //console.log(request.url);//tambien te muestra los parametros
+		  //console.log(request.ip);
+		  //console.log(request.ips);
+		  console.log(request.method);
 
-	  //me muestra la ip que hace el request
-	  console.log(getRequestIP(request));
+		  //me muestra la ip que hace el request
+		  console.log(getRequestIP(request));
+		  console.log("metodo con el que le pego a la url");
 
-	  route(pathname, handle, response);//le delego a cada uno su responsabilidad (en este caso manejar las rutas)
+		  route(handle, request, response);//le delego a cada uno su responsabilidad (en este caso manejar las rutas)
+	  }
 	}
 
 	http.createServer(onRequest).listen(8888);//tiene un loop para volver a ejecutarse cuando hay eventos
@@ -30,6 +34,9 @@ function iniciar(route, handle){
 function getRequestIP(request){
   return (request.headers['x-forwarded-for'] || '').split(',')[0] 
         || request.connection.remoteAddress;
+}
+
+function getRequestMethod(request){
 
 }
 
