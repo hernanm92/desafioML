@@ -16,20 +16,23 @@ function subir(response, url, method) {
   response.end();
 }
 
-function categories(response, url, method){
-  var options = {
-    host: 'api.mercadolibre.com',
+function categories(responseA, url, method){
+  /*var options = {
+    host: 'www.adoos.com.ar/',
     port: 80,
-    path: '/categories/MLA97994',
+    path: '/api/list?CountryID=ES&CategoryID=311',
     method: 'GET'
-  };
+  };*/
 
-  var req = http.request(options, function(response) {
+  var req = http.request('http://www.adoos.com.ar/api/post?PostBaseID=a4e58773e1dbabd3e3aed94e83cc0050', function(response) {
     console.log('STATUS: ' + response.statusCode);
     console.log('HEADERS: ' + JSON.stringify(response.headers));
     response.setEncoding('utf8');
     response.on('data', function (chunk) {
-      console.log('BODY: ' + chunk);
+      //console.log('BODY: ' + chunk);
+      responseA.writeHead(200, {"Content-Type": "text/html"});
+      responseA.write('<pre>BODY: ' + chunk + '</pre>');
+      responseA.end();
     });
   });
 
@@ -42,9 +45,9 @@ function categories(response, url, method){
   req.write('data\n');
   req.end();
 
-  response.writeHead(200, {"Content-Type": "text/html"});
-  response.write("API categories");
-  response.end();
+  //response.writeHead(200, {"Content-Type": "text/html"});
+  //response.write("API categories");
+  //response.end();
 }
 
 function items(response, url, method){
