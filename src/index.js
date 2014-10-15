@@ -10,7 +10,11 @@ handle["/"] = requestHandler.iniciar;
 handle["/iniciar"] = requestHandler.iniciar;
 handle["/subir"] = requestHandler.subir;
 handle["/categories"] = requestHandler.categories;
+handle["/adoos"] = requestHandler.adoos;
 handle["/items"] = requestHandler.items;
+handle["/twitter"] = requestHandler.twitter;
+handle["/redhat"] = requestHandler.redhat;
+handle["/api"] = requestHandler.api;
 //EN REALIDAD YO TENDRIA QUE HACER UNA UNICA RUTA, QUE TENDRIA QUE PEGARLE A LA API SIEMPRE DE LA MISMA MANERA
 //o una por cada categoria, pero con el siguiente parametro variable
 
