@@ -1,6 +1,6 @@
 var http = require("http");
 var https = require("https");
-//var express = require('express');
+var express = require('express');
 var url = require("url");
 var util = require("util");
 //var request = require('request'); //otra forma de pegarle a una url
@@ -135,7 +135,7 @@ function redhat(res, url, method){//api de redhat
   });
 }
 
-function categories(response, url, method){
+function apiml(response, url, method){
   https.globalAgent.options.secureProtocol = 'SSLv3_method'; //para que no me tire error
 
   var options = {
@@ -170,10 +170,15 @@ request('https://api.mercadolibre.com/sites/', {}, function(err, res, body) {
 });
 }
 
+function categories(response, url, method){
+
+}
+
 exports.iniciar = iniciar;
 exports.subir = subir;
 exports.adoos = adoos;
 exports.categories = categories;
+exports.apiml = apiml;
 exports.items = items;
 /*exports.twitter = twitter;*/
 exports.redhat = redhat;

@@ -9,6 +9,7 @@ var handle = {} //objeto con todas las rutas
 handle["/"] = requestHandler.iniciar;
 handle["/iniciar"] = requestHandler.iniciar;
 handle["/subir"] = requestHandler.subir;
+handle["/apiml"] = requestHandler.apiml;
 handle["/categories"] = requestHandler.categories;
 handle["/adoos"] = requestHandler.adoos;
 handle["/items"] = requestHandler.items;

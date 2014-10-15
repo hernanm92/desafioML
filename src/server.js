@@ -8,6 +8,7 @@ function iniciar(route, handle){
 		  console.log("Petición para " + pathname + " recibida.");//cada vez que haya un request loggea en el servidor
 		  //console.log(request.url);//tambien te muestra los parametros
 		  console.log(request.method);
+		  console.log(url.parse(request.url));
 
 		  //me muestra la ip que hace el request
 		  console.log(getRequestIP(request));
