@@ -2,7 +2,11 @@ var server = require("./server");
 var router = require("./router");
 var requestHandler = require("./requestHandler");
 //seria como la raiz, conoce a todos los modulos de la aplicacion
+var categories = require('./routes/categories');
 
+var app = require('express');
+
+//app.use('/categories');
 //<script src="http://static.mlstatic.com/org-img/sdk/mercadolibre-1.0.4.js"></script>
 
 var handle = {} //objeto con todas las rutas
@@ -20,3 +24,4 @@ handle["/api"] = requestHandler.api;
 //o una por cada categoria, pero con el siguiente parametro variable
 
 server.iniciar(router.route, handle);
+module.exports = app;
